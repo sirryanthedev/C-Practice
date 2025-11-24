@@ -33,8 +33,10 @@ int main(){
     int guess = 0;
     srand(time(NULL));
     int rand_num = (rand() % (max - min + 1)) + min;
+    int counter = 0;
 
-    do{
+    do{ 
+        counter++;
         printf("take a guess %d - %d: ", x, y);
         scanf("%d", &guess);
 
@@ -59,5 +61,12 @@ int main(){
 
     }while(guess != rand_num);
 
+    if(counter == 1){
+        printf("It took you %d try.\n", counter);
+    }
+    else{
+        printf("It took you %d tries.\n", counter);
+    }
+    
     return 0;
 }
