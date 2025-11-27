@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 void parity_check(int num);             // function prototypes
 void gcd(int num1, int num2);
@@ -16,6 +17,7 @@ int main(){
     printf("    q: quit\n\n");
 
     scanf("%c", &option);
+    option = tolower(option);           // to accept uppercase input as well
     
     switch(option){
         case 'e': 
