@@ -12,7 +12,6 @@ int main(){
 
     The program evaluates this expression for x = 0.1, 0.2, ..., 1.0.
     */
-
     
     printf("(sum) or y = ∑ ((x^n) / n!) from n = 0 to n = 10; do this for every x ranging from 0.1 to 1.0\n\n");
 
