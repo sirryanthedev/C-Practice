@@ -2,7 +2,7 @@
 
 int main(){
 
-// char triangle - program which outputs formatted triangle of n rows of chosen characters where n is the number inputted by the user
+    // (ex. char triangle) program which outputs formatted triangle of n rows of chosen characters where n is the number inputted by the user
 
     char character; // initialization - variables          
     int number;

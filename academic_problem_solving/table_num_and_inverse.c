@@ -2,7 +2,7 @@
 
 int main(){
 
-                                                    // a program which counts from 1 to 12 and prints each number with its inverse (1.6.3)
+    // (ex. 1.6.3) program which counts from 1 to 12 and prints each number with its inverse
 
     printf(" n | 1/n\n");
     printf("------------\n");

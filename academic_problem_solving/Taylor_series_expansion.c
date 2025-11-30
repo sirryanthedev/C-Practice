@@ -5,7 +5,7 @@ int factorial(int number); // function prototype for factorial
 
 int main(){
 
-    /*
+    /*  (ex. 2.1.3)
     Computes the Taylor series expansion of e^x:
 
         e^x ≈ Σ (x^n / n!)  for n = 0 to 10

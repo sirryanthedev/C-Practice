@@ -2,7 +2,7 @@
 
 int main(){
 
-                                                        // a program which computes the character that appears longest in sequence (1.5.7)
+    // (ex. 1.5.7) program which computes the character that appears longest in sequence
 
     int c;
     int current_count = 0;

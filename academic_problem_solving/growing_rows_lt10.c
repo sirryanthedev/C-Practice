@@ -3,6 +3,8 @@
 
 int main(){
 
+    // (ex. 1.4.5) program which computes growing rows
+
     for(int i = 1; i <= ROWS; i++){
         
         for(int s = ROWS-i; s > 0; s--){

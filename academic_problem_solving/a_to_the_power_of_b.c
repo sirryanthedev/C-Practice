@@ -2,7 +2,7 @@
 
 int main(){
 
-    // very simple program to compute a^b
+    // (ex. 1.4.1) very simple program to compute a^b
 
     int a,b;
     int result = 1;
