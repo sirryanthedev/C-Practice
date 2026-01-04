@@ -1,0 +1,10 @@
+The correct mental model
+
+Passing a pointer gives you:
+Access to the data the pointer points to
+
+Passing a pointer-to-a-pointer gives you:
+Access to the pointer itself
+
+One-sentence rule (remember this)
+If a function must change where a pointer points, you must pass a pointer to that pointer.
