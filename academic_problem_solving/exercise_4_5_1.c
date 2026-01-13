@@ -26,10 +26,10 @@ int main(){
 }
 
 void multiply_matrix(int matrix_1[N][N], int matrix_2[N][N], int res_matrix[N][N]){
-    for (int i = 0; i < N; i++){
-        for (int j = 0; j < N; j++){
+    for (int i = 0; i < N; i++){ // N: rows of matrix 1
+        for (int j = 0; j < N; j++){ // N: columns of matrix 2
             res_matrix[i][j] = 0;
-            for (int k = 0; k < N; k++){
+            for (int k = 0; k < N; k++){ // N: shared dimension (columns matrix 1, rows matrix 2)
                 res_matrix[i][j] += matrix_1[i][k] * matrix_2[k][j];
             }
         }
