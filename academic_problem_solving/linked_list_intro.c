@@ -25,6 +25,13 @@ int main(){
 
     print_nodes(head); // output the linked list
 
+    // free memory on heap used for the linked list
+    while (head){
+        struct node* temp = head;
+        head = head -> next;
+        free(temp);
+    }
+
     return 0;
 }
 
