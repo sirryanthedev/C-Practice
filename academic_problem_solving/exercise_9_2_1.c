@@ -44,7 +44,6 @@ int compare_s(const void* a, const void* b){
 }
 
 void function_1(struct node_dll** array, int size, struct node_dll** head){ // array of struct node_dll, #elements in array, pointer to the head of the dll
-
     // sort local copy of array
     qsort(array, size, sizeof(struct node_dll*), compare_s);
 
