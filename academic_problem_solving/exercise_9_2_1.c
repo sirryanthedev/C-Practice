@@ -12,50 +12,36 @@ struct node_dll{
 int compare_s(const void* a, const void* b); // compare each element of an array of struct node_dll* by their string property
 void function_1(struct node_dll** array, int size, struct node_dll** head); // link nodes by string property alphabetically
 void print_dll(struct node_dll* head); // output the dll
-void unique_nodes(struct node_dll** head);
+void unique_nodes(struct node_dll** head); // remove repeating nodes (nodes with the same string property)
+struct node_dll* merge_lists(struct node_dll* list_1, struct node_dll* list_2); // create a merged dll out of 2 seperate dll's
 
 int main(){
 
-    // create a dll ("Aaron" - "Aaron" - "Joe" - "Zayn" - "Zayn")
-    struct node_dll* head = NULL;
+    // info for first dll
+    struct node_dll* head_1 = NULL;
+    struct node_dll name_3 = {"Joe", NULL, NULL};
+    struct node_dll name_2 = {"Zayn", NULL, NULL};
+    struct node_dll name_1 = {"Adam", NULL, NULL};
+    struct node_dll* array_1[] = {&name_1, &name_2, &name_3};
+    int number_of_elements_1 = sizeof(array_1)/sizeof(array_1[0]);
 
-    struct node_dll name_1;
-    name_1.string = "Aaron";
+    // info for second dll
+    struct node_dll* head_2 = NULL;
+    struct node_dll name_3_2 = {"Solomon", NULL, NULL};
+    struct node_dll name_2_2 = {"Zecheria", NULL, NULL};
+    struct node_dll name_1_2 = {"Eve", NULL, NULL};
+    struct node_dll* array_2[] = {&name_1_2, &name_2_2, &name_3_2};
+    int number_of_elements_2 = sizeof(array_2)/sizeof(array_2[0]);
 
-    struct node_dll name_2;
-    name_2.string = "Aaron";
+    // create 2 seperate dll's
+    function_1(array_2, number_of_elements_2, &head_2);
+    function_1(array_1, number_of_elements_1, &head_1);
 
-    struct node_dll name_3;
-    name_3.string = "Joe";
+    // create a merged dll
+    struct node_dll* new_head = merge_lists(head_1, head_2);
 
-    struct node_dll name_4;
-    name_4.string = "Zayn";
-
-    struct node_dll name_5;
-    name_5.string = "Zayn";
-
-    name_5.next = head;
-    name_5.prev = &name_4;
-
-    name_4.next = &name_5;
-    name_4.prev = &name_3;
-
-    name_3.next = &name_4;
-    name_3.prev = &name_2;
-
-    name_2.next = &name_3;
-    name_2.prev = &name_1;
-
-    name_1.next = &name_2;
-    name_1.prev = NULL;
-
-    head = &name_1;
-
-    // delete repeating names
-    unique_nodes(&head);
-
-    // print the unique names
-    print_dll(head);
+    // print the merged_dll
+    print_dll(new_head);
 
     return 0;
 }
@@ -117,4 +103,55 @@ void unique_nodes(struct node_dll** head){ // assume that the dll is sorted alph
             current = current->next; // update current to next node
         }
     }
+}
+
+struct node_dll* merge_lists(struct node_dll* list_1, struct node_dll* list_2){
+    struct node_dll* new_head = NULL;
+    int count = 0; // keep track of total number of nodes
+    struct node_dll* p; // pointer variable to cycle through dll's
+
+    // extract number of nodes in first list
+    p = list_1;
+    while (p != NULL){
+        count ++;
+        p = p->next;
+    }
+
+    // extract number of nodes in second list
+    p = list_2;
+    while(p != NULL){
+        count ++;
+        p = p->next;
+    }
+
+    struct node_dll* elements[count]; // array where the individual nodes are stored
+
+    int idx_count = 0; // keep track of the index
+    struct node_dll* next = NULL; // keep track of the next node
+
+    p = list_1; // use p to cycle through the first list and add its nodes to elements (array)
+    while (p != NULL){
+        next = p->next; // save next node
+        elements[idx_count] = p; // add the address of the node to elements
+        idx_count++; // increment idx_count
+        p->prev = NULL; // unlink node from previous node
+        p->next = NULL; // unlink node from next node
+        p = next; // advance p
+    }
+
+    p = list_2; // change p to second head and add its nodes to elements (array)
+    while (p != NULL){
+        next = p->next; // save next node
+        elements[idx_count] = p; // add the address of the node to elements
+        idx_count++; // increment idx_count
+        p->prev = NULL; // unlink node from previous node
+        p->next = NULL; // unlink node from next node
+        p = next; // advance p
+    }
+
+    // merged list of elements and make the head new_head
+    function_1(elements, count, &new_head);
+
+    // head pointing to the merged list
+    return new_head;
 }
