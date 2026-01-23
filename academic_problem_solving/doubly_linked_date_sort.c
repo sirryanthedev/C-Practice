@@ -14,7 +14,7 @@ typedef struct Node{
     struct Node* next;
 } Node;
 
-void insert_dates_from_file(char* file_name, Node** head); // first function
+void insert_dates_from_file(char* file_name, Node** head);
 void sort_list(Node** head);
 void add_node(Node** head, Date* date);
 void print_list(Node* head);
@@ -84,7 +84,7 @@ void insert_dates_from_file(char* file_name, Node** head){
         return;
     }
 
-    char buffer[11];
+    char buffer[DATE_LEN];
     char line_buffer[100];
     int year, month, day;
 
